@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Chuck Norris Fact Generator</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Generate</string>
+    <string name="previous">Previous</string>
+
+    <string name="random_text">Random Fact(s)</string>
+    <string name="specific_text">Specific Fact</string>
+    <string name="single_text">Single Fact</string>
+    <string name="multiple_text">Multiple Facts</string>
+    <string name="chuck_norris_text">Chuck Norris</string>
+    <string name="other_text">Other Name</string>
+
+    <string name="id_text">Enter ID Here</string>
+    <string name="amount_text">Enter Amount Here</string>
+    <string name="first_text">First Name</string>
+    <string name="last_text">Last Name</string>
+    <string name="specific_categories">Specific Categories:</string>
+</resources>
