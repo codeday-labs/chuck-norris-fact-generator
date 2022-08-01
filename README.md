@@ -1,1 +1,1 @@
-# chuck-norris-fact-generator
+# Chuck Norris Fact Generator
