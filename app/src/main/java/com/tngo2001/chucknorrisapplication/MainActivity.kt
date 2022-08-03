@@ -64,7 +64,9 @@ class MainActivity : AppCompatActivity() {
         namesTxt.visibility = View.GONE
         categories.visibility = View.GONE
 
-        chuckNorrisAPI.getNumber { response: NumberResponseModel -> numJokes = response.value }
+        chuckNorrisAPI.getResponse("http://api.icndb.com/jokes/count") { response: NumberResponseModel ->
+            numJokes = response.value
+        }
 
         randomnessBtn.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -114,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        chuckNorrisAPI.getCategories { response: CategoriesResponseModel ->
+        chuckNorrisAPI.getResponse("http://api.icndb.com/categories") { response: CategoriesResponseModel ->
             for (category in response.value) {
                 runOnUiThread {
                     categories.addView(CheckBox(this@MainActivity).apply {
@@ -139,12 +141,12 @@ class MainActivity : AppCompatActivity() {
                 if (!randomnessBtn.isChecked && (numId < 1 || numId > numJokes)) {
                     showDialog("Error: The ID entered must be between 1 and $numJokes.")
                 } else {
-                    chuckNorrisAPI.getJoke("http://api.icndb.com/jokes$randomness$firstName$lastName") { response: JokeResponseModel ->
+                    chuckNorrisAPI.getResponse("http://api.icndb.com/jokes$randomness$firstName$lastName") { response: JokeResponseModel ->
                         showDialog(response.value.joke.replace("&quot;", "\""))
                     }
                 }
             } else {
-                chuckNorrisAPI.getJokes("http://api.icndb.com/jokes/random$quantity$firstName$lastName$limitTo") { response: JokesResponseModel ->
+                chuckNorrisAPI.getResponse("http://api.icndb.com/jokes/random$quantity$firstName$lastName$limitTo") { response: JokesResponseModel ->
                     for (jokesModel in response.value) showDialog(jokesModel.joke.replace("&quot;", "\""))
                 }
             }
