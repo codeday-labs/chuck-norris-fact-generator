@@ -140,12 +140,12 @@ class MainActivity : AppCompatActivity() {
                     showDialog("Error: The ID entered must be between 1 and $numJokes.")
                 } else {
                     chuckNorrisAPI.getJoke("http://api.icndb.com/jokes$randomness$firstName$lastName") { response: JokeResponseModel ->
-                        showDialog(response.value.joke)
+                        showDialog(response.value.joke.replace("&quot;", "\""))
                     }
                 }
             } else {
                 chuckNorrisAPI.getJokes("http://api.icndb.com/jokes/random$quantity$firstName$lastName$limitTo") { response: JokesResponseModel ->
-                    for (jokesModel in response.value) showDialog(jokesModel.joke)
+                    for (jokesModel in response.value) showDialog(jokesModel.joke.replace("&quot;", "\""))
                 }
             }
         }
